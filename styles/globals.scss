@@ -1,2 +1,7 @@
 // Variables
-@import "variables";
+@import 'variables';
+
+body {
+  max-width: 1600px;
+  margin: 0 auto;
+}
