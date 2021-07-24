@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './layout.module.scss';
 import { Row, Col } from 'antd';
 import { Logo } from '../components/icons';
@@ -10,29 +10,58 @@ import {
   MenuOutlined,
   CloseOutlined,
 } from '@ant-design/icons';
+import { Link } from 'react-scroll';
 import { useMediaQuery } from 'react-responsive';
 
 function Header() {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
+  let listener = null;
   const [isOpen, setIsOpen] = useState(true);
+  const [navbarScroll, setNavbarScroll] = useState(false);
+
+  useEffect(() => {
+    listener = document.addEventListener('scroll', (e) => {
+      let scrolled = document.scrollingElement.scrollTop;
+      if (scrolled >= 120) {
+        setNavbarScroll(true);
+      } else {
+        setNavbarScroll(false);
+      }
+    });
+    return () => {
+      document.removeEventListener('scroll', listener);
+    };
+  }, [navbarScroll]);
 
   return (
     <div className={isMobile ? styles.headerMb : styles.header}>
       <Row
         justify={isMobile ? 'space-around' : 'center'}
         align="middle"
-        className={styles.navbarContent}
+        className={
+          !navbarScroll
+            ? styles.navbarContent
+            : `${styles.navbarContent} ${styles.colorChange}`
+        }
       >
-        <Col span={isMobile ? 12 : 2}>
+        <Col span={isMobile ? 12 : 2} className={styles.logo}>
           <Logo />
         </Col>
         {!isMobile && (
           <>
             <Col span={12} offset={2} className={styles.navbarMiddle}>
               <div className={styles.navbar}>
-                <span>Home</span>
-                <span>Product</span>
+                <span>
+                  <Link to="Home" spy={true}>
+                    Home
+                  </Link>
+                </span>
+                <span>
+                  <Link to="Product" spy={true} offset={-100} delay={2000}>
+                    Product
+                  </Link>
+                </span>
                 <span>About Us</span>
                 <span>Contact</span>
               </div>

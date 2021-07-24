@@ -1,0 +1,132 @@
+@import '../../../styles/variables';
+
+.container {
+  padding: 10rem 3rem 5rem;
+  // transform: translateY(200px);
+
+  .mainContent {
+    padding-top: 5rem;
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 60px;
+    }
+    p {
+      min-width: 400px;
+      text-align: justify;
+      font-weight: lighter;
+      font-size: 16px;
+    }
+
+    .btnProduct {
+      padding: 0.5rem 4rem;
+      background: $black;
+      color: $bodyMain;
+      border-radius: 12px;
+      border: none;
+    }
+  }
+
+  .imageBox {
+    padding: 0 1.25rem;
+  }
+}
+
+.containerSm {
+  .mainContentMobile {
+    margin: 0 auto;
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      font-size: 30px;
+    }
+    p {
+      text-align: justify;
+      font-weight: lighter;
+      font-size: 10px;
+    }
+
+    .btnProduct {
+      padding: 0.5rem 1rem;
+      background: $black;
+      color: $bodyMain;
+      border-radius: 12px;
+      border: none;
+      display: inline-block;
+    }
+  }
+
+  .boxImageSm {
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+.section {
+  padding: 0 3rem;
+
+  .banner {
+    background: linear-gradient(#dfd3c3, #dfd3c300);
+    padding: 0 5rem;
+    -webkit-filter: drop-shadow(2px 2px 2px rgba(224, 224, 224, 0.25));
+    filter: drop-shadow(2px 2px 2px rgba(224, 224, 224, 0.25));
+    border-radius: 20px;
+
+    h2 {
+      font-size: 30px;
+      line-height: 45px;
+      font-weight: 500;
+    }
+
+    button {
+      padding: 0.5rem 1.5rem;
+      background: #454545;
+      border-radius: 5px;
+      color: $bodyMain;
+      -webkit-filter: drop-shadow(2px 2px 2px rgba(105, 92, 78, 0.2));
+      filter: drop-shadow(2px 2px 2px rgba(105, 92, 78, 0.2));
+    }
+  }
+
+  .products {
+    padding: 3rem 3rem;
+    width: 100%;
+
+    .carouselProduct {
+      background: #e8e8e8;
+      text-align: center;
+      border-radius: 12px;
+
+      &:hover {
+        background: #dfd3c3;
+      }
+    }
+  }
+
+  .statusContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 3rem 0 0;
+    padding-bottom: 3rem;
+
+    .statusItem {
+      svg {
+        margin-right: 10px;
+      }
+
+      h5 {
+        font-weight: 700;
+        font-size: 20px;
+        color: $black;
+      }
+
+      p {
+        font-weight: 300;
+        font-size: 16px;
+        color: $black;
+      }
+    }
+  }
+}
