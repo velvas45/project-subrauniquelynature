@@ -5,10 +5,14 @@ import { useMediaQuery } from 'react-responsive';
 import { Row, Col, Divider } from 'antd';
 import Slide from 'react-reveal/Slide';
 import Zoom from 'react-reveal/Zoom';
+import { useRouter } from 'next/router';
 
-// components
+// image
 import LampImage from '../../../public/images/lamp.svg';
 import MainImage from '../../../public/images/main.svg';
+
+// component
+import CustomButton from '../../../components/Button';
 
 function HomeSection() {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
@@ -20,80 +24,94 @@ function HomeSection() {
   );
 }
 
-const MobileHome = () => (
-  <Row justify="center">
-    <Col span={24}>
-      <div className={styles.mainContentMobile}>
-        <Zoom>
-          <h1>RATTAN FURNITURE</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            aliquet nibh id iaculis pharetra. Maecenas at leo non ligula congue
-            cursus. Integer rhoncus urna tellus, fermentum ultrices risus
-            finibus quis. In non pretium metus, quis ornare nunc. Phasellus
-            sollicitudin
-          </p>
-          <Divider />
-          <button className={styles.btnProduct}>Our Product</button>
-        </Zoom>
-      </div>
-    </Col>
-  </Row>
-);
-
-const DekstopHome = () => (
-  <Row align="middle">
-    <Col span={12}>
-      <Slide left>
-        <div className={styles.mainContent}>
-          <h1>
-            RATTAN <br /> FURNITURE
-          </h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            aliquet nibh id iaculis pharetra. Maecenas at leo non ligula congue
-            cursus. Integer rhoncus urna tellus, fermentum ultrices risus
-            finibus quis. In non pretium metus, quis ornare nunc. Phasellus
-            sollicitudin
-          </p>
-          <Divider />
-          <button className={styles.btnProduct}>Our Product</button>
+const MobileHome = () => {
+  const router = useRouter();
+  const onClickHandler = () => {
+    router.push('/all-products');
+    // alert('clicked');
+  };
+  return (
+    <Row justify="center">
+      <Col span={24}>
+        <div className={styles.mainContentMobile}>
+          <Zoom>
+            <h1>RATTAN FURNITURE</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+              aliquet nibh id iaculis pharetra. Maecenas at leo non ligula
+              congue cursus. Integer rhoncus urna tellus, fermentum ultrices
+              risus finibus quis. In non pretium metus, quis ornare nunc.
+              Phasellus sollicitudin
+            </p>
+            <Divider />
+            <CustomButton label={'Our Product'} onClicked={onClickHandler} />
+          </Zoom>
         </div>
-      </Slide>
-    </Col>
-    <Col span={12}>
-      <div className={styles.imageBox}>
-        <Row>
-          <Col>
-            <Slide top>
-              <div>
-                <Image
-                  src={LampImage}
-                  alt="Picture of the Lamp"
-                  width={320}
-                  height={300}
-                />
-              </div>
-            </Slide>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Slide right>
-              <div>
-                <Image
-                  src={MainImage}
-                  alt="Picture of the Lamp"
-                  width={600}
-                  height={300}
-                />
-              </div>
-            </Slide>
-          </Col>
-        </Row>
-      </div>
-    </Col>
-  </Row>
-);
+      </Col>
+    </Row>
+  );
+};
+
+const DekstopHome = () => {
+  const router = useRouter();
+  const onClickHandler = () => {
+    router.push('/all-products');
+    // alert('clicked');
+  };
+  return (
+    <Row align="middle">
+      <Col span={12}>
+        <Slide left>
+          <div className={styles.mainContent}>
+            <h1>
+              RATTAN <br /> FURNITURE
+            </h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
+              aliquet nibh id iaculis pharetra. Maecenas at leo non ligula
+              congue cursus. Integer rhoncus urna tellus, fermentum ultrices
+              risus finibus quis. In non pretium metus, quis ornare nunc.
+              Phasellus sollicitudin
+            </p>
+            <Divider />
+            <CustomButton label={'Our Product'} onClicked={onClickHandler} />
+          </div>
+        </Slide>
+      </Col>
+      <Col span={12}>
+        <div className={styles.imageBox}>
+          <Row>
+            <Col>
+              <Slide top>
+                <div>
+                  <Image
+                    src={LampImage}
+                    alt="Picture of the Lamp"
+                    width={320}
+                    height={300}
+                  />
+                </div>
+              </Slide>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Slide right>
+                <div>
+                  <Image
+                    src={MainImage}
+                    alt="Picture of the Lamp"
+                    width={600}
+                    height={300}
+                  />
+                </div>
+              </Slide>
+            </Col>
+          </Row>
+        </div>
+      </Col>
+    </Row>
+  );
+};
 
 export default HomeSection;

@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import styles from './button.module.scss';
 
-function index() {
-    return (
-        <div>
-            
-        </div>
-    )
+function Button({ label, onClicked }) {
+  return (
+    <button className={styles.btnBlack} onClick={onClicked}>
+      {label}
+    </button>
+  );
 }
 
-export default index
+export default Button;

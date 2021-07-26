@@ -2,7 +2,7 @@
 
 .container {
   padding: 10rem 3rem 5rem;
-  // transform: translateY(200px);
+  // transform: translateY(100px);
 
   .mainContent {
     padding-top: 5rem;
@@ -17,14 +17,6 @@
       text-align: justify;
       font-weight: lighter;
       font-size: 16px;
-    }
-
-    .btnProduct {
-      padding: 0.5rem 4rem;
-      background: $black;
-      color: $bodyMain;
-      border-radius: 12px;
-      border: none;
     }
   }
 
@@ -65,67 +57,249 @@
 
 .section {
   padding: 0 3rem;
+  margin-top: 5rem;
+  // transform: translateY(100px);
 
-  .banner {
-    background: linear-gradient(#dfd3c3, #dfd3c300);
-    padding: 0 5rem;
-    -webkit-filter: drop-shadow(2px 2px 2px rgba(224, 224, 224, 0.25));
-    filter: drop-shadow(2px 2px 2px rgba(224, 224, 224, 0.25));
-    border-radius: 20px;
-
-    h2 {
-      font-size: 30px;
-      line-height: 45px;
-      font-weight: 500;
-    }
-
-    button {
-      padding: 0.5rem 1.5rem;
-      background: #454545;
-      border-radius: 5px;
-      color: $bodyMain;
-      -webkit-filter: drop-shadow(2px 2px 2px rgba(105, 92, 78, 0.2));
-      filter: drop-shadow(2px 2px 2px rgba(105, 92, 78, 0.2));
-    }
-  }
+  // product
 
   .products {
     padding: 3rem 3rem;
     width: 100%;
+  }
 
-    .carouselProduct {
-      background: #e8e8e8;
+  // ABOUT
+  .aboutTitle {
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 35px;
+    /* identical to box height */
+
+    letter-spacing: 0.05em;
+    color: $black;
+  }
+
+  .aboutContent {
+    h2 {
+      font-family: Playfair Display;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 40px;
+      line-height: 61px;
+      letter-spacing: 0.05em;
+    }
+
+    P {
+      text-align: justify;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    h2,
+    p {
+      color: $black;
+    }
+  }
+
+  .boxImg {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, 1fr);
+
+    .imgOne,
+    .imgThree,
+    .imgTwo,
+    .imgFour {
+      img {
+        border-radius: 2rem;
+      }
+    }
+
+    .imgOne {
+      grid-area: 1/2/2/3;
+    }
+    .imgTwo {
+      grid-area: 2/1/3/2;
+      transform: translate(0, 3rem);
+    }
+    .imgThree {
+      grid-area: 1/1/2/2;
+      transform: translate(5.2rem, 1.5rem);
+    }
+    .imgFour {
+      grid-area: 2/2/3/3;
+    }
+  }
+
+  // contact
+  .contactBoxImg {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+
+    img {
+      transform: scaleX(-1);
+    }
+  }
+
+  .contactFormContent {
+    background: #f3f3f3;
+    padding: 3rem 4rem;
+    text-align: center;
+
+    h4 {
+      font-family: Playfair Display;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 30px;
+      line-height: 40px;
       text-align: center;
-      border-radius: 12px;
+      letter-spacing: 0.05em;
+      color: $black;
+    }
 
-      &:hover {
-        background: #dfd3c3;
+    .formGroup {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      input {
+        margin: 1rem 0;
+        padding: 0.25rem;
+        border: none;
+        border-bottom: 1px solid $black;
+        background: transparent;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .submitBtn {
+        padding: 0.2rem 2rem;
+        margin: 0 auto;
+        width: 180px;
+        background: $black;
+        color: #f3f3f3;
+        border-radius: 8px;
       }
     }
   }
 
-  .statusContainer {
+  @media only screen and (max-width: 1024px) {
+    .boxImg {
+      gap: 0 2rem;
+      .imgTwo {
+        transform: translate(0, 3rem);
+      }
+      .imgThree {
+        transform: translate(0rem, 1.5rem);
+      }
+    }
+  }
+}
+
+.sectionSm {
+  margin-top: 3rem;
+
+  .products {
+    padding: 3rem 3rem;
+    width: 100%;
+  }
+  // ABOUT
+  .aboutTitle {
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 35px;
+    /* identical to box height */
+
+    letter-spacing: 0.05em;
+    color: $black;
+  }
+
+  .aboutContent {
+    h2 {
+      font-family: Playfair Display;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 30px;
+      line-height: 61px;
+      letter-spacing: 0.05em;
+    }
+
+    P {
+      text-align: justify;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 24px;
+    }
+
+    h2,
+    p {
+      color: $black;
+    }
+  }
+
+  .boxImg {
+    display: none;
+  }
+
+  // content
+  .contactBoxImg {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    padding: 0;
     align-items: center;
-    margin: 3rem 0 0;
-    padding-bottom: 3rem;
 
-    .statusItem {
-      svg {
-        margin-right: 10px;
+    img {
+      transform: scaleX(-1);
+    }
+  }
+
+  .contactFormContent {
+    background: #f3f3f3;
+    padding: 1rem;
+    text-align: center;
+
+    h4 {
+      font-family: Playfair Display;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 40px;
+      text-align: center;
+      letter-spacing: 0.05em;
+      color: $black;
+    }
+
+    .formGroup {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      input {
+        margin: 1rem 0;
+        padding: 0.25rem;
+        border: none;
+        border-bottom: 1px solid $black;
+        background: transparent;
+
+        &:focus {
+          outline: none;
+        }
       }
 
-      h5 {
-        font-weight: 700;
-        font-size: 20px;
-        color: $black;
-      }
-
-      p {
-        font-weight: 300;
-        font-size: 16px;
-        color: $black;
+      .submitBtn {
+        padding: 0.2rem 2rem;
+        margin: 0 auto;
+        width: 180px;
+        background: $black;
+        color: #f3f3f3;
+        border-radius: 8px;
       }
     }
   }

@@ -10,15 +10,19 @@ import {
   MenuOutlined,
   CloseOutlined,
 } from '@ant-design/icons';
-import { Link } from 'react-scroll';
+import { scroller } from 'react-scroll';
+import Link from 'next/link';
 import { useMediaQuery } from 'react-responsive';
+import { useRouter } from 'next/router';
 
 function Header() {
+  const router = useRouter();
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   let listener = null;
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [navbarScroll, setNavbarScroll] = useState(false);
+  const [elementId, setElementId] = useState(null);
 
   useEffect(() => {
     listener = document.addEventListener('scroll', (e) => {
@@ -34,8 +38,57 @@ function Header() {
     };
   }, [navbarScroll]);
 
+  useEffect(() => {
+    if (elementId) {
+      if (elementId === 'Home') {
+        scroller.scrollTo(elementId, {
+          duration: 200,
+          delay: 0,
+          offset: 0,
+          smooth: true,
+        });
+      } else {
+        scroller.scrollTo(elementId, {
+          duration: 200,
+          delay: 0,
+          offset: -100,
+          smooth: true,
+        });
+      }
+    }
+  }, [elementId]);
+
+  function clickHandlerOpen() {
+    if (isOpen) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true);
+    }
+  }
+
+  function scrollTo(element) {
+    setElementId(element);
+  }
+
+  function scrollToMb(element) {
+    setElementId(element);
+    if (isOpen) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true);
+    }
+  }
+
   return (
-    <div className={isMobile ? styles.headerMb : styles.header}>
+    <div
+      className={
+        isMobile
+          ? !isOpen
+            ? `${styles.headerMb} ${styles.bgFill}`
+            : styles.headerMb
+          : styles.header
+      }
+    >
       <Row
         justify={isMobile ? 'space-around' : 'center'}
         align="middle"
@@ -52,32 +105,48 @@ function Header() {
           <>
             <Col span={12} offset={2} className={styles.navbarMiddle}>
               <div className={styles.navbar}>
-                <span>
-                  <Link to="Home" spy={true}>
-                    Home
-                  </Link>
+                <span onClick={() => scrollTo('Home')}>
+                  <Link href="/">Home</Link>
                 </span>
-                <span>
-                  <Link to="Product" spy={true} offset={-100} delay={2000}>
+                <span onClick={() => scrollTo('Product')}>
+                  <Link scroll={false} href="/">
                     Product
                   </Link>
                 </span>
-                <span>About Us</span>
-                <span>Contact</span>
+                <span onClick={() => scrollTo('About')}>
+                  <Link scroll={false} href="/">
+                    About Us
+                  </Link>
+                </span>
+                <span onClick={() => scrollTo('Contact')}>
+                  <Link scroll={false} href="/">
+                    Contact
+                  </Link>
+                </span>
               </div>
             </Col>
             <Col span={6} offset={2}>
-              <div className={styles.btnBox}>
-                <button className={styles.btnSignIn}>Sign In</button>
-                <button className={styles.btnSignUp}>Sign Up</button>
+              <div className={styles.navMedsos}>
+                <span>
+                  <InstagramOutlined />
+                </span>
+                <span>
+                  <TwitterOutlined />
+                </span>
+                <span>
+                  <FacebookFilled />
+                </span>
+                <span>
+                  <WhatsAppOutlined />
+                </span>
               </div>
             </Col>
           </>
         )}
         {isMobile && (
           <Col>
-            <span onClick={() => setIsOpen(!isOpen)}>
-              {!isOpen ? <CloseOutlined /> : <MenuOutlined />}
+            <span onClick={clickHandlerOpen}>
+              {isOpen ? <CloseOutlined /> : <MenuOutlined />}
             </span>
           </Col>
         )}
@@ -85,24 +154,46 @@ function Header() {
       {isMobile && (
         <div
           className={
-            isOpen
+            !isOpen
               ? styles.mobileNavbar
               : `${styles.mobileNavbar} ${styles.active}`
           }
         >
           <ul>
-            <li>Home</li>
-            <li>Product</li>
-            <li>About Us</li>
-            <li>Contact</li>
+            <li onClick={() => scrollToMb('Home')}>
+              <Link href="/">Home</Link>
+            </li>
+            <li onClick={() => scrollToMb('Product')}>
+              <Link scroll={false} href="/">
+                Product
+              </Link>
+            </li>
+            <li onClick={() => scrollToMb('About')}>
+              <Link scroll={false} href="/">
+                About Us
+              </Link>
+            </li>
+            <li onClick={() => scrollToMb('Contact')}>
+              <Link scroll={false} href="/">
+                Contact
+              </Link>
+            </li>
           </ul>
 
-          <button block className={styles.btnSignUp}>
-            Sign Up
-          </button>
-          <button block className={styles.btnSignIn}>
-            Sign In
-          </button>
+          <div className={styles.navMedsos}>
+            <span>
+              <InstagramOutlined />
+            </span>
+            <span>
+              <TwitterOutlined />
+            </span>
+            <span>
+              <FacebookFilled />
+            </span>
+            <span>
+              <WhatsAppOutlined />
+            </span>
+          </div>
         </div>
       )}
     </div>

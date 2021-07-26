@@ -1,0 +1,91 @@
+@import '../../styles/variables';
+
+.banner,
+.bannerSm {
+  background: linear-gradient(#dfd3c3, #dfd3c300);
+  -webkit-filter: drop-shadow(2px 2px 2px rgba(224, 224, 224, 0.25));
+  filter: drop-shadow(2px 2px 2px rgba(224, 224, 224, 0.25));
+  border-radius: 20px;
+
+  h2 {
+    line-height: 45px;
+    font-weight: 500;
+  }
+}
+
+.banner {
+  padding: 0 5rem;
+  margin-top: 16px;
+
+  h2 {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .banner {
+    padding: 0 2.5rem;
+  }
+}
+
+.bannerSm {
+  text-align: center;
+  margin-top: 12px;
+
+  h2 {
+    font-size: 20px;
+  }
+}
+
+.statusContainer,
+.statusContainerSm {
+  margin: 3rem 0 0;
+  padding-bottom: 3rem;
+
+  .statusItem {
+    svg {
+      margin-right: 10px;
+    }
+    h5 {
+      font-weight: 700;
+      font-size: 20px;
+      color: $black;
+    }
+
+    p {
+      font-weight: 300;
+      font-size: 16px;
+      color: $black;
+    }
+  }
+}
+
+.statusContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.statusContainerSm {
+  .statusItem {
+    padding: 0;
+    text-align: center;
+    h5 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+}
+
+.productList {
+  background: #e8e8e8;
+  text-align: center;
+  border-radius: 12px;
+  margin: 0 1rem;
+
+  &:hover {
+    background: #dfd3c3;
+  }
+}

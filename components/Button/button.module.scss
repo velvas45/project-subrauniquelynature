@@ -1,0 +1,10 @@
+@import '../../styles/variables';
+
+.btnBlack {
+  padding: 0.2rem 2rem;
+  margin: 0 auto;
+  width: 180px;
+  background: $black;
+  color: #f3f3f3;
+  border-radius: 8px;
+}

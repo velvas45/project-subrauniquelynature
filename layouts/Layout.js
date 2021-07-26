@@ -4,13 +4,21 @@ import Head from 'next/head';
 import { useMediaQuery } from 'react-responsive';
 import styles from './layout.module.scss';
 
-const Layout = ({ title, children }) => {
+const Layout = ({ title, children, isNotHome = false }) => {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
   return (
     <>
       <Head>{title && <title>{title} · SUBRA UNIQELY NATURE</title>}</Head>
       <Header />
-      <main className={!isMobile ? styles.mainContent : styles.mobileContent}>
+      <main
+        className={
+          !isMobile
+            ? isNotHome
+              ? styles.mainContentNormal
+              : styles.mainContent
+            : styles.mobileContent
+        }
+      >
         {children}
       </main>
       <Footer />
