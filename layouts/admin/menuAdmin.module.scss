@@ -1,0 +1,12 @@
+@import '../../styles/variables';
+
+.container {
+  padding: 6rem 3rem;
+  background: $bodyMain;
+
+  .mainTitle {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 2rem;
+  }
+}

@@ -20,3 +20,31 @@ body {
 .slick-slide {
   padding: 0 12px;
 }
+
+.form-login-container {
+  background: $bodyMain;
+  min-height: 100vh;
+  // display: flex;
+  // align-items: center;
+  // width: 100%;
+  // padding: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .form-login {
+    background: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    min-width: 800px;
+    padding: 5rem 3rem;
+
+    h3 {
+      text-align: center;
+      margin: 0 0 3rem;
+    }
+  }
+}

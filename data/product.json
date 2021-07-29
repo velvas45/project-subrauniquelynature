@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Chair",
+    "imgSrc": ["Sofa", "bangku", "meja"],
+    "description": "lorem ipsum dolores"
+  },
+  {
+    "title": "Chair2",
+    "imgSrc": ["Sofa", "bangku", "meja"],
+    "description": "lorem ipsum dolores"
+  }
+]
