@@ -6,11 +6,11 @@ import Product from './Product';
 import About from './About';
 import Contact from './Contact';
 
-function LandingPage() {
+function LandingPage({ dataProducts }) {
   return (
     <>
       <Home />
-      <Product />
+      <Product dataProducts={dataProducts} />
       <About />
       <Contact />
     </>

@@ -2,20 +2,30 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './product.module.scss';
 import CustomModal from '../Modal';
+import { Divider } from 'antd';
 
-function ProductList({ data: { title, imgSrc } }) {
+function ProductList({ data, isLanding = false }) {
+  const { name, photoOne, Category } = data;
   const [visible, setVisible] = React.useState(false);
+  const myLoader = ({ src }) => {
+    return `${process.env.baseImageUrl}/${photoOne}`;
+  };
   return (
     <>
       <div className={styles.productList} onClick={() => setVisible(!visible)}>
-        <Image src={imgSrc} alt="bangku" width={280} height={140} />
-        <p>{title}</p>
+        {!isLanding && <p className={styles.titleProduct}>{Category?.name}</p>}
+        <div style={{ padding: '2rem 2rem 0' }}>
+          <Image
+            loader={myLoader}
+            src={`${process.env.baseImageUrl}/${photoOne}`}
+            alt={name}
+            width={280}
+            height={140}
+          />
+        </div>
+        <p className={styles.nameProduct}>{name}</p>
       </div>
-      <CustomModal
-        visible={visible}
-        setVisible={setVisible}
-        data={{ title, description: 'lorem ipsum dolorent ' }}
-      />
+      <CustomModal visible={visible} setVisible={setVisible} data={data} />
     </>
   );
 }

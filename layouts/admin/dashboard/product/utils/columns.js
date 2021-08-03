@@ -1,55 +1,73 @@
-import { Button, Space } from 'antd';
+import { Button, Space, Image, Popconfirm } from 'antd';
+import { QuestionCircleOutlined } from '@ant-design/icons';
 
-const columns = ({ getColumnSearchProps, clickEdit }) => {
+const columns = ({ getColumnSearchProps, clickEdit, clickDelete }) => {
   return [
     {
       title: 'Nama Product',
-      dataIndex: 'namaProduct',
-      key: 'namaProduct',
-      ...getColumnSearchProps('namaProduct'),
+      dataIndex: 'name',
+      key: 'name',
+      ...getColumnSearchProps('name'),
     },
     {
       title: 'Jenis Kategori',
-      dataIndex: 'jenisKategori',
-      key: 'jenisKategori',
-      ...getColumnSearchProps('jenisKategori'),
+      dataIndex: 'kategoriNama',
+      key: 'kategoriNama',
+      ...getColumnSearchProps('kategoriNama'),
     },
     {
       title: 'Deskripsi Product',
-      dataIndex: 'deskripsi',
-      key: 'deskripsi',
-      ...getColumnSearchProps('address'),
+      dataIndex: 'description',
+      key: 'description',
       sorter: (a, b) => a.address.length - b.address.length,
       sortDirections: ['descend', 'ascend'],
     },
     {
       title: 'Product Image',
-      dataIndex: 'imageSatu',
-      key: 'imageSatu',
-      ...getColumnSearchProps('imageSatu'),
+      dataIndex: 'photoOne',
+      key: 'photoOne',
+      render: (data, record) => (
+        <Space size="middle">
+          <Image src={`http://localhost:5000/${data}`} />
+        </Space>
+      ),
     },
     {
       title: 'Product Image 2',
-      dataIndex: 'imageDua',
-      key: 'imageDua',
-      ...getColumnSearchProps('imageDua'),
+      dataIndex: 'photoTwo',
+      key: 'photoTwo',
+      render: (data, record) => (
+        <Space size="middle">
+          <Image src={`http://localhost:5000/${data}`} />
+        </Space>
+      ),
     },
     {
       title: 'Product Image 3',
-      dataIndex: 'imageTiga',
-      key: 'imageTiga',
-      ...getColumnSearchProps('imageTiga'),
+      dataIndex: 'photoThree',
+      key: 'photoThree',
+      render: (data, record) => (
+        <Space size="middle">
+          <Image src={`http://localhost:5000/${data}`} />
+        </Space>
+      ),
     },
 
     {
       title: '',
       key: 'action',
-      render: (text, record) => (
+      render: (dataRow, record) => (
         <Space size="middle">
-          <Button onClick={clickEdit}>Edit</Button>
-          <Button type="primary" danger>
-            Delete
-          </Button>
+          <Button onClick={() => clickEdit(dataRow)}>Edit</Button>
+          <Popconfirm
+            title="Apakah kamu ingin menghapus produk ini？"
+            icon={<QuestionCircleOutlined style={{ color: 'red' }} />}
+            onConfirm={() => clickDelete(dataRow)}
+          >
+            <Button type="primary" danger>
+              Delete
+            </Button>
+          </Popconfirm>
         </Space>
       ),
     },

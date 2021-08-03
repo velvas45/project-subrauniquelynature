@@ -3,7 +3,7 @@ import { Table, Input, Button, Space } from 'antd';
 import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
 
-function CustomTable({ columns, data, clickEdit }) {
+function CustomTable({ columns, data, clickEdit, loading, clickDelete }) {
   const [searchText, setSearchText] = useState('');
   const [searchCol, setSearchCol] = useState('');
   let searchInput = React.createRef();
@@ -103,8 +103,10 @@ function CustomTable({ columns, data, clickEdit }) {
       columns={columns({
         getColumnSearchProps,
         clickEdit,
+        clickDelete,
       })}
       dataSource={data}
+      loading={loading}
     />
   );
 }

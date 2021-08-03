@@ -6,6 +6,7 @@ import {
   PlusCircleOutlined,
   ProjectOutlined,
   SettingOutlined,
+  MailOutlined,
 } from '@ant-design/icons';
 import { Logo } from '../components/icons';
 
@@ -24,6 +25,9 @@ function HeaderAdmin() {
       if (currPathname.includes('setting')) {
         setCurrentActivePage(['3']);
       }
+      if (currPathname.includes('pesan')) {
+        setCurrentActivePage(['4']);
+      }
     };
 
     const handleRouteChangeError = (url, { shallow }) => {
@@ -39,6 +43,9 @@ function HeaderAdmin() {
 
   useEffect(() => {
     const currPath = router.pathname.split('/');
+    if (currPath.includes('pesan')) {
+      setCurrentActivePage(['4']);
+    }
     if (currPath.includes('setting')) {
       setCurrentActivePage(['3']);
     }
@@ -61,6 +68,9 @@ function HeaderAdmin() {
       case '3':
         router.replace('/admin/dashboard/setting');
         break;
+      case '4':
+        router.replace('/admin/dashboard/pesan');
+        break;
       default:
         break;
     }
@@ -82,10 +92,13 @@ function HeaderAdmin() {
         onSelect={selectHandler}
       >
         <Menu.Item key="1" icon={<ProjectOutlined />}>
-          Project
+          Products
         </Menu.Item>
         <Menu.Item key="2" icon={<PlusCircleOutlined />}>
           Kategori
+        </Menu.Item>
+        <Menu.Item key="4" icon={<MailOutlined />}>
+          Pesan
         </Menu.Item>
         <Menu.Item key="3" icon={<SettingOutlined />}>
           Setting

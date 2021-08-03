@@ -1,8 +1,9 @@
 import React from 'react';
 import Layout from '../../../layouts/Layout';
 import Kategori from '../../../layouts/admin/dashboard/kategori';
+import withAuth from '../../../components/HOC/withAuth'
 
-function DashboardAdmin() {
+function KategoriAdmin() {
   return (
     <Layout title="Admin Site Kategori" isAdmin={true}>
       <Kategori />
@@ -10,4 +11,4 @@ function DashboardAdmin() {
   );
 }
 
-export default DashboardAdmin;
+export default withAuth(KategoriAdmin);

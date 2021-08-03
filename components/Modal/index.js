@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Modal, Image } from 'antd';
 import styles from './modal.module.scss';
 import { useMediaQuery } from 'react-responsive';
 
-function CustomModal({ visible, setVisible, data: { title, description } }) {
+function CustomModal({ visible, setVisible, data }) {
+  const { name, photoOne, photoTwo, photoThree, description, Category } = data;
+  const [mainImg, setMainImg] = useState(photoOne);
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+  const handleMainImg = (src) => {
+    setMainImg(src);
+  };
+
   return (
     <Modal
       centered
@@ -20,27 +27,27 @@ function CustomModal({ visible, setVisible, data: { title, description } }) {
             <div className={styles.boxImg}>
               <Image
                 width={isMobile ? 200 : 300}
-                src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                src={`${process.env.baseImageUrl}/${mainImg}`}
               />
               <div
                 className={isMobile ? styles.boxImgChildSm : styles.boxImgChild}
               >
-                <span>
+                <span onClick={() => handleMainImg(photoOne)}>
                   <img
                     width={isMobile ? 50 : 100}
-                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    src={`${process.env.baseImageUrl}/${photoOne}`}
                   />
                 </span>
-                <span>
+                <span onClick={() => handleMainImg(photoTwo)}>
                   <img
                     width={isMobile ? 50 : 100}
-                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    src={`${process.env.baseImageUrl}/${photoTwo}`}
                   />
                 </span>
-                <span>
+                <span onClick={() => handleMainImg(photoThree)}>
                   <img
                     width={isMobile ? 50 : 100}
-                    src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                    src={`${process.env.baseImageUrl}/${photoThree}`}
                   />
                 </span>
               </div>
@@ -48,7 +55,7 @@ function CustomModal({ visible, setVisible, data: { title, description } }) {
           </Col>
           <Col xs={24} sm={24} md={24} lg={12}>
             <div className={styles.content}>
-              <h3>{title}</h3>
+              <h3>{name}</h3>
               <h6>Deskripsi</h6>
               <p>{description}</p>
             </div>

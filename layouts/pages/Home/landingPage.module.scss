@@ -165,7 +165,9 @@
       flex-direction: column;
       justify-content: center;
 
-      input {
+      input,
+      textarea,
+      select {
         margin: 1rem 0;
         padding: 0.25rem;
         border: none;
@@ -281,7 +283,8 @@
       flex-direction: column;
       justify-content: center;
 
-      input {
+      input,
+      textarea {
         margin: 1rem 0;
         padding: 0.25rem;
         border: none;

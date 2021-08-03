@@ -1,9 +1,6 @@
-import { Select, Upload, Button, Input } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
+import { Input } from 'antd';
 
-const { Option } = Select;
-
-const fields = [
+const fieldsProfile = [
   {
     item: {
       name: 'email',
@@ -20,14 +17,9 @@ const fields = [
     },
     element: <Input.Password />,
   },
-  {
-    item: {
-      name: 'confirmPassword',
-      label: 'Confirm Password',
-      //   rules: [{ required: true }],
-    },
-    element: <Input.Password />,
-  },
+];
+
+const fieldsSosmed = [
   {
     item: {
       name: 'twitter',
@@ -44,7 +36,7 @@ const fields = [
   },
   {
     item: {
-      name: 'whatsapp',
+      name: 'whatssup',
       label: 'Whatsapp',
       //   rules: [{ required: true }],
     },
@@ -56,6 +48,19 @@ const fields = [
       //   rules: [{ required: true }],
     },
   },
+  {
+    item: {
+      name: 'email',
+      label: 'Email Perusahaan',
+      rules: [{ type: 'email' }],
+    },
+  },
+  {
+    item: {
+      name: 'id',
+    },
+    element: <Input type="hidden" />,
+  },
 ];
 
-export default fields;
+export { fieldsProfile, fieldsSosmed };

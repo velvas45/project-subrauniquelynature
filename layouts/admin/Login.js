@@ -1,9 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import { Form, Input, Button, Checkbox } from 'antd';
+import { admin } from '../../utils/api';
 
 function LoginAdmin() {
-  const onFinish = (values) => {
-    console.log('Success:', values);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+
+  const onFinish = async (values) => {
+    setIsLoading(true);
+    try {
+      const data = {
+        email: values.username,
+        password: values.password,
+      };
+      const result = await admin.login(data);
+      const {
+        data: { token },
+      } = result;
+      const { email } = result.data.data;
+      if (token) {
+        setIsLoading(false);
+        window.sessionStorage.clear();
+        window.sessionStorage.setItem('user', btoa(email));
+        window.sessionStorage.setItem('token', token);
+        router.push('/admin/dashboard');
+      } else {
+        alert(result?.message);
+      }
+    } catch (err) {
+      setIsLoading(false);
+      alert('Password atau username salah!');
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -23,7 +51,7 @@ function LoginAdmin() {
           onFinishFailed={onFinishFailed}
         >
           <Form.Item
-            label="Username"
+            label="Email"
             name="username"
             rules={[{ required: true, message: 'Please input your username!' }]}
           >
@@ -39,7 +67,7 @@ function LoginAdmin() {
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" loading={isLoading}>
               Masuk
             </Button>
           </Form.Item>

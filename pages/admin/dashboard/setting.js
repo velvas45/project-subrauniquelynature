@@ -1,8 +1,9 @@
 import React from 'react';
 import Layout from '../../../layouts/Layout';
 import Setting from '../../../layouts/admin/dashboard/setting';
+import withAuth from '../../../components/HOC/withAuth'
 
-function setting() {
+function SettingAdmin() {
   return (
     <Layout title="Admin Site Setting" isAdmin={true}>
       <Setting />
@@ -10,4 +11,4 @@ function setting() {
   );
 }
 
-export default setting;
+export default withAuth(SettingAdmin);

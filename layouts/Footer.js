@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './layout.module.scss';
-import { Row, Col, Grid } from 'antd';
+import { Row, Col } from 'antd';
 import { useMediaQuery } from 'react-responsive';
 import {
   InstagramOutlined,
@@ -10,11 +10,23 @@ import {
   MailFilled,
 } from '@ant-design/icons';
 
-const { useBreakpoint } = Grid;
+import { client } from '../utils/api';
+import useAsync from '../utils/libs/useAsync';
 
 function Footer() {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
-  const screens = useBreakpoint();
+  const [sosmed, setSosmed] = useState([]);
+  const [listMediaSosial, loadingMedsos, error] = useAsync(
+    client.getMediaSosial,
+    'GET'
+  );
+
+  useEffect(() => {
+    if (listMediaSosial) {
+      setSosmed(listMediaSosial.data);
+    }
+  }, [listMediaSosial]);
+
   return (
     <div className={isMobile ? styles.footerSm : styles.footer}>
       {isMobile ? (
@@ -34,7 +46,7 @@ function Footer() {
                     marginBottom: '1rem',
                   }}
                 />
-                <p>Sun@gmail.co.id</p>
+                <p>{sosmed && sosmed[0]?.email}</p>
               </span>
               <span>
                 <WhatsAppOutlined
@@ -44,7 +56,7 @@ function Footer() {
                     marginBottom: '1rem',
                   }}
                 />
-                <p>081398728930</p>
+                <p>{sosmed && sosmed[0]?.whatssup}</p>
               </span>
             </div>
           </Col>
@@ -52,13 +64,19 @@ function Footer() {
             <div className={styles.sosMed}>
               <h3>Social Media</h3>
               <span>
-                <InstagramOutlined />
+                <a target="_blank" href={sosmed && sosmed[0]?.instagram}>
+                  <InstagramOutlined />
+                </a>
               </span>
               <span>
-                <TwitterOutlined />
+                <a target="_blank" href={sosmed && sosmed[0]?.twitter}>
+                  <TwitterOutlined />
+                </a>
               </span>
               <span>
-                <FacebookFilled />
+                <a target="_blank" href={sosmed && sosmed[0]?.facebook}>
+                  <FacebookFilled />
+                </a>
               </span>
             </div>
           </Col>
@@ -86,7 +104,7 @@ function Footer() {
                     marginBottom: '1rem',
                   }}
                 />
-                <p>Sun@gmail.co.id</p>
+                <p>{sosmed && sosmed[0]?.email}</p>
               </span>
               <span>
                 <WhatsAppOutlined
@@ -96,7 +114,7 @@ function Footer() {
                     marginBottom: '1rem',
                   }}
                 />
-                <p>081398728930</p>
+                <p>{sosmed && sosmed[0]?.whatssup}</p>
               </span>
             </div>
           </Col>
@@ -104,13 +122,19 @@ function Footer() {
             <div className={styles.sosMed}>
               <h3>Social Media</h3>
               <span>
-                <InstagramOutlined />
+                <a target="_blank" href={sosmed && sosmed[0]?.instagram}>
+                  <InstagramOutlined />
+                </a>
               </span>
               <span>
-                <TwitterOutlined />
+                <a target="_blank" href={sosmed && sosmed[0]?.twitter}>
+                  <TwitterOutlined />
+                </a>
               </span>
               <span>
-                <FacebookFilled />
+                <a target="_blank" href={sosmed && sosmed[0]?.facebook}>
+                  <FacebookFilled />
+                </a>
               </span>
             </div>
           </Col>

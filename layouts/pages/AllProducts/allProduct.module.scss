@@ -30,19 +30,22 @@
     margin: 0 12px;
     padding: 0 2rem;
     background: transparent;
-    padding: 15px 0 0;
+    // padding: 15px 0 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 
     span {
       padding: 0 0.5rem;
-      ul {
-        color: #787878;
-        font-size: 20px;
-        list-style: none;
-        display: flex;
-        li {
-          margin: 0 12px;
+      input,
+      select {
+        margin: 1.25rem 0;
+        border: none;
+        background: transparent;
+        // border-bottom: 1px solid #000;
+
+        &:focus {
+          outline: none;
         }
       }
     }
@@ -54,10 +57,21 @@
     align-items: center;
   }
 
-  .productList {
-    display: flex;
+  .productList,
+  .productListSm {
+    display: grid;
+    grid-gap: 10px;
     justify-content: center;
+    align-items: center;
+    margin: 0 auto;
     padding: 3rem 0;
+  }
+
+  .productList {
+    grid-template-columns: auto auto auto auto auto;
+  }
+  .productListSm {
+    grid-template-columns: auto auto;
   }
 
   span {

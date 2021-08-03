@@ -42,17 +42,8 @@ function SampleNextArrow(props) {
   );
 }
 
-function ProductSection() {
-  const data = [
-    {
-      title: 'Chair',
-      imgSrc: Sofa,
-    },
-    {
-      title: 'Chair2',
-      imgSrc: Sofa,
-    },
-  ];
+function ProductSection({ dataProducts }) {
+  const data = dataProducts;
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   return (
@@ -76,6 +67,7 @@ function ProductSection() {
         <Banner
           data={{ title: 'Daybed Couch Patio Furniture', imgSrc: Sofa }}
           responsiveMobile={isMobile}
+          isLanding={true}
         />
       </Slide>
 
@@ -89,7 +81,6 @@ function ProductSection() {
 }
 
 const CarouselProduct = (props) => {
-  console.log(props.data);
   const settings = {
     dots: true,
     speed: 300,
@@ -100,6 +91,7 @@ const CarouselProduct = (props) => {
     swipeToSlide: true,
     focusOnSelect: true,
     lazyLoad: true,
+    dots: false,
     responsive: [
       {
         breakpoint: 1024,
@@ -131,37 +123,8 @@ const CarouselProduct = (props) => {
     <Zoom>
       <div className={styles.products}>
         <Slider {...settings}>
-          {/* 
-          <div className={styles.carouselProduct}>
-            <Image src={Sofa} alt="bangku" width={280} height={140} />
-            <p>Chair</p>
-          </div>
-          <div className={styles.carouselProduct}>
-            <Image src={Sofa} alt="bangku" width={280} height={140} />
-            <p>Chair</p>
-          </div>
-          <div className={styles.carouselProduct}>
-            <Image src={Sofa} alt="bangku" width={280} height={140} />
-            <p>Chair</p>
-          </div>
-          <div className={styles.carouselProduct}>
-            <Image src={Sofa} alt="bangku" width={280} height={140} />
-            <p>Chair</p>
-          </div>
-          <div className={styles.carouselProduct}>
-            <Image src={Sofa} alt="bangku" width={280} height={140} />
-            <p>Chair</p>
-          </div>
-          <div className={styles.carouselProduct}>
-            <Image src={Sofa} alt="bangku" width={280} height={140} />
-            <p>Chair</p>
-          </div>
-          <div className={styles.carouselProduct}>
-            <Image src={Sofa} alt="bangku" width={280} height={140} />
-            <p>Chair</p>
-          </div> */}
-          {props.data.map((each) => (
-            <ProductList data={each} />
+          {props.data.map((each, idx) => (
+            <ProductList data={each} key={idx} isLanding={true} />
           ))}
           {/* <ProductList data={props.data} /> */}
         </Slider>

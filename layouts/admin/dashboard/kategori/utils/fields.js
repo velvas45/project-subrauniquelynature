@@ -1,15 +1,18 @@
-import { Select, Upload, Button } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
-
-const { Option } = Select;
+import { Input } from 'antd';
 
 const fields = [
   {
     item: {
-      name: 'namaKategori',
+      name: 'kategori',
       label: 'Nama Kategori',
       //   rules: [{ required: true }],
     },
+  },
+  {
+    item: {
+      name: 'id',
+    },
+    element: <Input type="hidden" />,
   },
 ];
 

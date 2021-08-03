@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '../../../layouts/Layout';
 import Product from '../../../layouts/admin/dashboard/product';
+import withAuth from '../../../components/HOC/withAuth'
 
 function DashboardAdmin() {
   return (
@@ -10,4 +11,4 @@ function DashboardAdmin() {
   );
 }
 
-export default DashboardAdmin;
+export default withAuth(DashboardAdmin);

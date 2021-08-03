@@ -10,8 +10,10 @@ export default function CustomForm({
   formlayout,
   tailLayout,
   showReset = false,
+  showSubmit = true,
   withButton = true,
   initialValues,
+  loading,
 }) {
   const defaultFormLayout =
     layout === 'horizontal'
@@ -31,8 +33,8 @@ export default function CustomForm({
   }, [form, initialValues]);
 
   const onFinish = (values) => {
-    console.log(values);
     handleSubmit(values);
+    form.resetFields();
   };
 
   const onReset = () => {
@@ -65,9 +67,11 @@ export default function CustomForm({
       </Row>
       {withButton && (
         <Form.Item {...defaultTailLayout} style={{ textAlign: 'right' }}>
-          <Button type="primary" htmlType="submit">
-            Simpan
-          </Button>
+          {showSubmit && (
+            <Button type="primary" htmlType="submit" loading={loading}>
+              Simpan
+            </Button>
+          )}
           {showReset && (
             <Button htmlType="button" onClick={onReset}>
               Reset

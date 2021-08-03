@@ -2,6 +2,7 @@ import Header from './Header';
 import HeaderAdmin from './HeaderAdmin';
 import Footer from './Footer';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { useMediaQuery } from 'react-responsive';
 import styles from './layout.module.scss';
 import { Layout as LayoutAntd, Dropdown, Menu } from 'antd';
@@ -10,25 +11,32 @@ import { DownOutlined } from '@ant-design/icons';
 
 const { Content } = LayoutAntd;
 
-const Logout = () => (
+const Logout = ({ handlerLogout }) => (
   <Menu>
-    <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com"
-      >
-        Logout
-      </a>
+    <Menu.Item onClick={handlerLogout}>
+      <a rel="noopener noreferrer">Logout</a>
     </Menu.Item>
   </Menu>
 );
 
 const Layout = ({ title, children, isNotHome = false, isAdmin = false }) => {
+  const router = useRouter();
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+  const logoutSession = () => {
+    const token = window.sessionStorage.getItem('token');
+    if (token) {
+      window.sessionStorage.clear();
+      router.push('/admin');
+    }
+  };
+
   return (
     <>
-      <Head>{title && <title>{title} · SUBRA UNIQELY NATURE</title>}</Head>
+      <Head>
+        {title && <title>{title} · SUBRA UNIQELY NATURE</title>}
+        <link rel="shortcut icon" href="/logo.png" />
+      </Head>
       {!isAdmin ? (
         <>
           <Header />
@@ -53,7 +61,7 @@ const Layout = ({ title, children, isNotHome = false, isAdmin = false }) => {
               <LayoutAntd.Header
                 style={{ background: '#fff', textAlign: 'end' }}
               >
-                <Dropdown overlay={Logout}>
+                <Dropdown overlay={<Logout handlerLogout={logoutSession} />}>
                   <a
                     className="ant-dropdown-link"
                     onClick={(e) => e.preventDefault()}

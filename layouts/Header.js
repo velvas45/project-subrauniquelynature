@@ -15,14 +15,28 @@ import Link from 'next/link';
 import { useMediaQuery } from 'react-responsive';
 import { useRouter } from 'next/router';
 
+import { client } from '../utils/api';
+import useAsync from '../utils/libs/useAsync';
+
 function Header() {
   const router = useRouter();
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   let listener = null;
   const [isOpen, setIsOpen] = useState(false);
+  const [sosmed, setSosmed] = useState(null);
   const [navbarScroll, setNavbarScroll] = useState(false);
   const [elementId, setElementId] = useState(null);
+  const [listMediaSosial, loadingMedsos, error] = useAsync(
+    client.getMediaSosial,
+    'GET'
+  );
+
+  useEffect(() => {
+    if (listMediaSosial) {
+      setSosmed(listMediaSosial.data);
+    }
+  }, [listMediaSosial]);
 
   useEffect(() => {
     listener = document.addEventListener('scroll', (e) => {
@@ -128,16 +142,30 @@ function Header() {
             <Col span={6} offset={2}>
               <div className={styles.navMedsos}>
                 <span>
-                  <InstagramOutlined />
+                  <a target="_blank" href={sosmed && sosmed[0]?.instagram}>
+                    <InstagramOutlined />
+                  </a>
                 </span>
                 <span>
-                  <TwitterOutlined />
+                  <a target="_blank" href={sosmed && sosmed[0]?.twitter}>
+                    <TwitterOutlined />
+                  </a>
                 </span>
                 <span>
-                  <FacebookFilled />
+                  <a target="_blank" href={sosmed && sosmed[0]?.facebook}>
+                    <FacebookFilled />
+                  </a>
                 </span>
                 <span>
-                  <WhatsAppOutlined />
+                  {/* " */}
+                  <a
+                    target="_blank"
+                    href={`https://api.whatsapp.com/send?phone=${
+                      sosmed && sosmed[0]?.whatssup
+                    }`}
+                  >
+                    <WhatsAppOutlined />
+                  </a>
                 </span>
               </div>
             </Col>

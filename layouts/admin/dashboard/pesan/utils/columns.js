@@ -8,11 +8,18 @@ const columns = ({
 }) => {
   return [
     {
-      title: 'Nama Kategori',
+      title: 'Pengirim',
       dataIndex: 'name',
       key: 'name',
-      width: '80%',
+      width: '40%',
       ...getColumnSearchProps('name'),
+    },
+    {
+      title: 'Email Pengirim',
+      dataIndex: 'email',
+      key: 'email',
+      width: '40%',
+      ...getColumnSearchProps('email'),
     },
 
     {
@@ -21,9 +28,11 @@ const columns = ({
       width: '20%',
       render: (dataRow, record) => (
         <Space size="middle">
-          <Button onClick={() => clickEdit(dataRow)}>Edit</Button>
+          <Button onClick={() => clickEdit(dataRow)} type="primary">
+            View
+          </Button>
           <Popconfirm
-            title="Apakah kamu ingin menghapus kategori ini？"
+            title="Apakah kamu ingin menghapus pesan ini？"
             icon={<QuestionCircleOutlined style={{ color: 'red' }} />}
             onConfirm={() => clickDelete(dataRow)}
           >
