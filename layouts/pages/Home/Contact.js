@@ -85,10 +85,10 @@ const ContactContent = ({ isMobile, submitHandler, refAttr }) => (
       <Col xs={24} sm={24} md={12}>
         <div className={styles.contactBoxImg}>
           <Slide top>
-            <Image src={LampImage} width={300} height={200} />
+            <Image src={LampImage} width={600} height={200} />
           </Slide>
           <Slide left>
-            <Image src={MainImage} width={300} height={200} />
+            <Image src={MainImage} width={600} height={200} />
           </Slide>
         </div>
       </Col>

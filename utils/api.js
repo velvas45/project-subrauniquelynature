@@ -7,7 +7,7 @@ export const admin = {
   editKategori: 'category/update',
   deleteKategori: 'category/destroy',
   createKategori: 'category/create',
-  getListProduct: '/product/get-list',
+  getListProduct: '/admin/get',
   editProduct: 'product/update',
   deleteProduct: 'product/destroy',
   createProduct: 'product/create',

@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import styles from './product.module.scss';
 import CustomModal from '../Modal';
-import { Divider } from 'antd';
 
 function ProductList({ data, isLanding = false }) {
   const { name, photoOne, Category } = data;
