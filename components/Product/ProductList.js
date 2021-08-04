@@ -20,7 +20,7 @@ function ProductList({ data, isLanding = false }) {
             src={`${process.env.baseImageUrl}/${photoOne}`}
             alt={name}
             width={280}
-            height={140}
+            height={200}
           />
         </div>
         <p className={styles.nameProduct}>{name}</p>
