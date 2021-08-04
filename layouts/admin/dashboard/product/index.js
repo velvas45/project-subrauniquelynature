@@ -56,18 +56,24 @@ function ProductAdmin() {
   };
 
   const handleSubmit = async (value) => {
+    console.log(value);
     setLoadingPost(true);
     try {
-      const photoOne64 = await toBase64(value.image?.file?.originFileObj);
-      const photoTwo64 = await toBase64(value.image2?.file?.originFileObj);
-      const photoThree64 = await toBase64(value.image3?.file?.originFileObj);
+      const photoOne64 =
+        value.image?.file && (await toBase64(value.image?.file?.originFileObj));
+      const photoTwo64 =
+        value.image2?.file &&
+        (await toBase64(value.image2?.file?.originFileObj));
+      const photoThree64 =
+        value.image3?.file &&
+        (await toBase64(value.image3?.file?.originFileObj));
       const data = {
         name: value.name,
         description: value.description,
         categoryId: value.kategori,
-        photoOne: photoOne64,
-        photoTwo: photoTwo64,
-        photoThree: photoThree64,
+        photoOne: photoOne64 ?? undefined,
+        photoTwo: photoTwo64 ?? undefined,
+        photoThree: photoThree64 ?? undefined,
       };
       const result = await myAxios.post(`${admin.createProduct}`, data);
       if (result.status === 200) {
@@ -82,6 +88,7 @@ function ProductAdmin() {
         setIsModalVisible(false);
       }
     } catch (err) {
+      console.log(err);
       setLoadingPost(false);
       notification.error({
         message: 'Terdapat kesalahan',
@@ -109,9 +116,9 @@ function ProductAdmin() {
         name: value.name,
         description: value.description,
         categoryId: value.kategori,
-        photoOne: photoOne64 ?? value.image,
-        photoTwo: photoTwo64 ?? value.image2,
-        photoThree: photoThree64 ?? value.image3,
+        photoOne: photoOne64 ?? undefined,
+        photoTwo: photoTwo64 ?? undefined,
+        photoThree: photoThree64 ?? undefined,
       };
       const result = await myAxios.put(`${admin.editProduct}/${id}`, data);
       if (result.status === 200) {

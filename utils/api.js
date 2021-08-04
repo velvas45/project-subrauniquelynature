@@ -27,4 +27,5 @@ export const client = {
   getProducts: '/product/get-list',
   slickProduct: '/landing',
   selectProduct: '/product/filter/category',
+  getCountry: '/country/get-list',
 };

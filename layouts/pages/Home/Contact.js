@@ -12,6 +12,7 @@ import MainImage from '../../../public/images/main.svg';
 // API
 import { myAxios } from '../../../utils/axios';
 import { client } from '../../../utils/api';
+import useAsync from '../../../utils/libs/useAsync';
 
 function Contact() {
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
@@ -20,6 +21,8 @@ function Contact() {
   const inputMsg = useRef(null);
   const inputCountry = useRef(null);
   const inputCompany = useRef(null);
+
+  const [countryList] = useAsync(client.getCountry, 'GET');
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -74,12 +77,18 @@ function Contact() {
         isMobile={isMobile}
         submitHandler={submitHandler}
         refAttr={refObj}
+        dataCountry={countryList && countryList?.data}
       />
     </div>
   );
 }
 
-const ContactContent = ({ isMobile, submitHandler, refAttr }) => (
+const ContactContent = ({
+  isMobile,
+  submitHandler,
+  refAttr,
+  dataCountry = [],
+}) => (
   <div className="mt-5 pb-5">
     <Row justify="center" align="middle">
       <Col xs={24} sm={24} md={12}>
@@ -122,14 +131,21 @@ const ContactContent = ({ isMobile, submitHandler, refAttr }) => (
                   placeholder="Company"
                   required
                 />
-                <input
+                <select
                   ref={refAttr.inputCountry}
                   name="country"
                   type="country"
                   id="country"
                   placeholder="Country"
                   required
-                />
+                >
+                  <option value="">Country</option>
+                  {dataCountry.map((each) => (
+                    <option value={each.country_name} key={each.id}>
+                      {each.country_name}
+                    </option>
+                  ))}
+                </select>
                 <textarea
                   id="message"
                   name="message"
