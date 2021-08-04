@@ -34,7 +34,7 @@ function ProductAdmin() {
     'GET'
   );
 
-  const newProduct = product?.response?.data?.rows.map((each) => ({
+  const newProduct = product?.data?.map((each) => ({
     id: each.id,
     name: each.name,
     description: each.description,
@@ -95,18 +95,23 @@ function ProductAdmin() {
   const handleEditSubmit = async (value) => {
     setLoadingPost(true);
     try {
-      const photoOne64 = await toBase64(value.image?.file?.originFileObj);
-      const photoTwo64 = await toBase64(value.image2?.file?.originFileObj);
-      const photoThree64 = await toBase64(value.image3?.file?.originFileObj);
+      const photoOne64 =
+        value.image.file && (await toBase64(value.image?.file?.originFileObj));
+      const photoTwo64 =
+        value.image2.file &&
+        (await toBase64(value.image2?.file?.originFileObj));
+      const photoThree64 =
+        value.image3.file &&
+        (await toBase64(value.image3?.file?.originFileObj));
 
       const id = value.id;
       const data = {
         name: value.name,
         description: value.description,
         categoryId: value.kategori,
-        photoOne: photoOne64,
-        photoTwo: photoTwo64,
-        photoThree: photoThree64,
+        photoOne: photoOne64 ?? value.image,
+        photoTwo: photoTwo64 ?? value.image2,
+        photoThree: photoThree64 ?? value.image3,
       };
       const result = await myAxios.put(`${admin.editProduct}/${id}`, data);
       if (result.status === 200) {
@@ -121,6 +126,7 @@ function ProductAdmin() {
         setIsEditModalVisible(false);
       }
     } catch (err) {
+      console.log(err);
       setLoadingPost(false);
       notification.error({
         message: 'Terdapat kesalahan',
@@ -237,7 +243,34 @@ const EditModal = ({
     name: data && data.name,
     description: data && data.description,
     kategori: data && data.categoryId,
+    image: data && data.photoOne,
+    image2: data && data.photoTwo,
+    image3: data && data.photoThree,
   };
+
+  const fileList = [
+    {
+      uid: '1',
+      name: 'image.png',
+      status: 'done',
+      url: `${process.env.baseImageUrl}/${data?.photoOne}`,
+      thumbUrl: `${process.env.baseImageUrl}/${data?.photoOne}`,
+    },
+    {
+      uid: '2',
+      name: 'image2.png',
+      status: 'done',
+      url: `${process.env.baseImageUrl}/${data?.photoTwo}`,
+      thumbUrl: `${process.env.baseImageUrl}/${data?.photoTwo}`,
+    },
+    {
+      uid: '3',
+      name: 'image3.png',
+      status: 'done',
+      url: `${process.env.baseImageUrl}/${data?.photoThree}`,
+      thumbUrl: `${process.env.baseImageUrl}/${data?.photoThree}`,
+    },
+  ];
 
   return (
     <Modal
@@ -250,7 +283,7 @@ const EditModal = ({
     >
       <CustomForm
         {...{
-          fields: fields({ arrKategori }),
+          fields: fields({ arrKategori, fileList }),
           handleSubmit,
           title: 'Edit Product',
           initialValues: initVal,

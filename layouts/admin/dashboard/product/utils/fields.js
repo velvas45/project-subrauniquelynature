@@ -4,7 +4,8 @@ import { UploadOutlined } from '@ant-design/icons';
 const { Option } = Select;
 const { TextArea } = Input;
 
-const fields = ({ arrKategori }) => {
+const fields = ({ arrKategori, fileList = [] }) => {
+  console.log(fileList);
   return [
     {
       item: {
@@ -73,7 +74,9 @@ const fields = ({ arrKategori }) => {
             }
             return isJpgOrPng && isLt2M;
           }}
+          maxCount={1}
           listType="picture"
+          defaultFileList={[fileList[0]]}
         >
           <Button icon={<UploadOutlined />}>Click to upload</Button>
         </Upload>
@@ -88,6 +91,7 @@ const fields = ({ arrKategori }) => {
       element: (
         <Upload
           name="image2"
+          maxCount={1}
           beforeUpload={function beforeUpload(file) {
             const isJpgOrPng =
               file.type === 'image/jpeg' ||
@@ -115,6 +119,7 @@ const fields = ({ arrKategori }) => {
             return isJpgOrPng && isLt2M;
           }}
           listType="picture"
+          defaultFileList={[fileList[1]]}
         >
           <Button icon={<UploadOutlined />}>Click to upload</Button>
         </Upload>
@@ -130,6 +135,7 @@ const fields = ({ arrKategori }) => {
       element: (
         <Upload
           name="image3"
+          maxCount={1}
           beforeUpload={function beforeUpload(file) {
             const isJpgOrPng =
               file.type === 'image/jpeg' ||
@@ -157,6 +163,7 @@ const fields = ({ arrKategori }) => {
             return isJpgOrPng && isLt2M;
           }}
           listType="picture"
+          defaultFileList={[fileList[2]]}
         >
           <Button icon={<UploadOutlined />}>Click to upload</Button>
         </Upload>
