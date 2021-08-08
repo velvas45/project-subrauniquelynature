@@ -7,6 +7,7 @@ import Slide from 'react-reveal/Slide';
 import Zoom from 'react-reveal/Zoom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { useRouter } from 'next/router';
 
 // images (svg)
 import Sofa from '../../../public/images/sofa.svg';
@@ -44,6 +45,7 @@ function SampleNextArrow(props) {
 
 function ProductSection({ dataProducts }) {
   const data = dataProducts;
+  const router = useRouter();
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
 
   return (
@@ -57,7 +59,7 @@ function ProductSection({ dataProducts }) {
         <Col>
           <Slide right>
             <span>
-              <a>See All</a>
+              <a onClick={() => router.push('/all-products')}>See All</a>
             </span>
           </Slide>
         </Col>

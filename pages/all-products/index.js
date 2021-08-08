@@ -13,11 +13,12 @@ function index({ data }) {
   );
 }
 
-export async function getServerSideProps(ctx) {
+export async function getStaticProps(ctx) {
   const res = await clientAxios.get(client.getProducts);
   const data = res?.data?.response;
   return {
     props: { data }, // will be passed to the page component as props
+    revalidate: 45,
   };
 }
 
