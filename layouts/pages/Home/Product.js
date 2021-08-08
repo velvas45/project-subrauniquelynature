@@ -53,7 +53,7 @@ function ProductSection({ dataProducts }) {
       <Row justify="space-between" align="middle">
         <Col>
           <Slide left>
-            <h3>Best Product</h3>
+            <h3 className={styles.productTitle}>Best Product</h3>
           </Slide>
         </Col>
         <Col>

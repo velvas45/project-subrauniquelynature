@@ -67,6 +67,13 @@
     width: 100%;
   }
 
+  .productTitle {
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+  }
+
   // ABOUT
   .aboutTitle {
     font-family: Playfair Display;
@@ -134,6 +141,12 @@
   }
 
   // contact
+  .contactTitle {
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+  }
   .contactBoxImg {
     display: flex;
     flex-direction: column;
@@ -210,6 +223,13 @@
     padding: 3rem 3rem;
     width: 100%;
   }
+  .productTitle {
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+  }
+
   // ABOUT
   .aboutTitle {
     font-family: Playfair Display;
@@ -251,6 +271,12 @@
   }
 
   // content
+  .contactTitle {
+    font-family: Playfair Display;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+  }
   .contactBoxImg {
     display: flex;
     flex-direction: column;
@@ -284,7 +310,8 @@
       justify-content: center;
 
       input,
-      textarea {
+      textarea,
+      select {
         margin: 1rem 0;
         padding: 0.25rem;
         border: none;

@@ -18,7 +18,7 @@ function ProductList({ data, isLanding = false }) {
             loader={myLoader}
             src={`${process.env.baseImageUrl}/${photoOne}`}
             alt={name}
-            width={280}
+            width={200}
             height={200}
           />
         </div>

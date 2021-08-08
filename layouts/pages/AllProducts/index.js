@@ -127,6 +127,7 @@ function AllProduct({ dataProduct }) {
         </div>
 
         {/* productList */}
+        <h6 style={{ padding: '0 2rem' }}>Filter by </h6>
         <div className={isMobile ? styles.productListSm : styles.productList}>
           {loadingData ? (
             <Spin />
