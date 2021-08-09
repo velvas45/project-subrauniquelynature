@@ -18,7 +18,7 @@
   margin-top: 16px;
 
   h2 {
-    font-size: 30px;
+    font-size: 28px;
   }
 }
 
@@ -33,7 +33,7 @@
   margin-top: 12px;
 
   h2 {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 
@@ -43,12 +43,14 @@
   padding-bottom: 3rem;
 
   .statusItem {
+    text-align: center;
     svg {
       margin-right: 10px;
     }
     h5 {
+      margin: 8px 0;
       font-weight: 700;
-      font-size: 20px;
+      font-size: 24px;
       color: $black;
     }
 
@@ -67,14 +69,17 @@
 }
 
 .statusContainerSm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   .statusItem {
-    padding: 0;
-    text-align: center;
+    padding: 1rem 0;
     h5 {
-      font-size: 16px;
+      font-size: 22px;
     }
     p {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 }
@@ -110,11 +115,20 @@
   .nameProduct {
     font-size: 20px;
     font-weight: 600;
-    width: 160px;
+    width: 200px;
     margin: 0 auto;
+    padding: 16px;
   }
 
   &:hover {
     background: #dfd3c3;
+  }
+
+  @media (max-width: 480px) {
+    .nameProduct {
+      font-size: 20px;
+      width: 100px;
+      padding: 8px;
+    }
   }
 }

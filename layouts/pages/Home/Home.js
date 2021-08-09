@@ -37,11 +37,14 @@ const MobileHome = () => {
           <Zoom>
             <h1>RATTAN FURNITURE</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-              aliquet nibh id iaculis pharetra. Maecenas at leo non ligula
-              congue cursus. Integer rhoncus urna tellus, fermentum ultrices
-              risus finibus quis. In non pretium metus, quis ornare nunc.
-              Phasellus sollicitudin
+              SUBRA UNIQUELY NATURE (SUN) is a company engaged in furniture made
+              from natural materials, especially rattan. We accept orders from
+              local to international scale. We work closely with local craftsmen
+              who have years of experience in furniture production. We guarantee
+              the best quality for all the products we offer and also supported
+              by safe and reliable shipping and payment services. This is all we
+              do to provide the best service to maintain your trust as a
+              customer.
             </p>
             <Divider />
             <CustomButton label={'Our Product'} onClicked={onClickHandler} />
@@ -67,11 +70,14 @@ const DekstopHome = () => {
               RATTAN <br /> FURNITURE
             </h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-              aliquet nibh id iaculis pharetra. Maecenas at leo non ligula
-              congue cursus. Integer rhoncus urna tellus, fermentum ultrices
-              risus finibus quis. In non pretium metus, quis ornare nunc.
-              Phasellus sollicitudin
+              SUBRA UNIQUELY NATURE (SUN) is a company engaged in furniture made
+              from natural materials, especially rattan. We accept orders from
+              local to international scale. We work closely with local craftsmen
+              who have years of experience in furniture production. We guarantee
+              the best quality for all the products we offer and also supported
+              by safe and reliable shipping and payment services. This is all we
+              do to provide the best service to maintain your trust as a
+              customer.
             </p>
             <Divider />
             <CustomButton label={'Our Product'} onClicked={onClickHandler} />

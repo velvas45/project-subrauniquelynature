@@ -7,7 +7,6 @@
   width: 100%;
   max-width: 2000px;
   top: 0;
-  transition: all 0.5s ease-out;
 
   .navbarMiddle {
     text-align: center;
@@ -46,7 +45,7 @@
   background: $navbarChange;
   width: 100%;
   padding: 8px 2px;
-  transition: all 0.5s ease;
+  transition: all 1s ease;
 }
 
 // header mobile

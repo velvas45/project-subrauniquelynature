@@ -20,7 +20,7 @@ function Banner({
         align="middle"
       >
         <Col>
-          <h2>{title}</h2>
+          <h2>Handmade rattan furniture made by the experts</h2>
           {isLanding && (
             <Button
               onClicked={() => router.replace('/all-products')}
