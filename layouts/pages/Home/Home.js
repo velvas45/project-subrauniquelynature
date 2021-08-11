@@ -1,7 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './landingPage.module.scss';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
+
+import { useWindowSize } from '../../../utils/libs/useWindowSize';
 import { Row, Col, Divider } from 'antd';
 import Slide from 'react-reveal/Slide';
 import Zoom from 'react-reveal/Zoom';
@@ -15,7 +17,17 @@ import MainImage from '../../../public/images/main.svg';
 import CustomButton from '../../../components/Button';
 
 function HomeSection() {
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  const size = useWindowSize();
+
+  React.useEffect(() => {
+    if (size < 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [size]);
 
   return (
     <div id="Home" className={isMobile ? styles.containerSm : styles.container}>

@@ -1,9 +1,12 @@
 import Header from './Header';
+import React from 'react';
 import HeaderAdmin from './HeaderAdmin';
 import Footer from './Footer';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
+
+import { useWindowSize } from '../utils/libs/useWindowSize';
 import styles from './layout.module.scss';
 import { Layout as LayoutAntd, Dropdown, Menu } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
@@ -21,7 +24,17 @@ const Logout = ({ handlerLogout }) => (
 
 const Layout = ({ title, children, isNotHome = false, isAdmin = false }) => {
   const router = useRouter();
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  const size = useWindowSize();
+
+  React.useEffect(() => {
+    if (size < 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [size]);
 
   const logoutSession = () => {
     const token = window.sessionStorage.getItem('token');

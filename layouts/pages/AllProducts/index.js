@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import styles from './allProduct.module.scss';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
+
+import { useWindowSize } from '../../../utils/libs/useWindowSize';
 import { Pagination, Spin, Select } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 
@@ -27,7 +29,17 @@ function AllProduct({ dataProduct }) {
     admin.getListKategori,
     'GET'
   );
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  const size = useWindowSize();
+
+  React.useEffect(() => {
+    if (size < 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [size]);
 
   const handlePagenation = async (pageNumber) => {
     setLoadingData(true);

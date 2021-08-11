@@ -12,7 +12,9 @@ import {
 } from '@ant-design/icons';
 import { scroller } from 'react-scroll';
 import Link from 'next/link';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
+
+import { useWindowSize } from '../utils/libs/useWindowSize';
 import { useRouter } from 'next/router';
 
 import { client } from '../utils/api';
@@ -20,7 +22,17 @@ import useAsync from '../utils/libs/useAsync';
 
 function Header() {
   const router = useRouter();
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  const size = useWindowSize();
+
+  React.useEffect(() => {
+    if (size < 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [size]);
 
   let listener = null;
   const [isOpen, setIsOpen] = useState(false);

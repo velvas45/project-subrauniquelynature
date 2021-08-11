@@ -1,5 +1,7 @@
 import React from 'react';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
+
+import { useWindowSize } from '../../../utils/libs/useWindowSize';
 import Slider from 'react-slick';
 import styles from './landingPage.module.scss';
 import { Row, Col } from 'antd';
@@ -46,7 +48,17 @@ function SampleNextArrow(props) {
 function ProductSection({ dataProducts }) {
   const data = dataProducts;
   const router = useRouter();
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  const size = useWindowSize();
+
+  React.useEffect(() => {
+    if (size < 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [size]);
 
   return (
     <div id="Product" className={isMobile ? styles.sectionSm : styles.section}>

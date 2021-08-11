@@ -1,12 +1,24 @@
 import React, { useState } from 'react';
 import { Row, Col, Modal, Image } from 'antd';
 import styles from './modal.module.scss';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
+
+import { useWindowSize } from '../../utils/libs/useWindowSize';
 
 function CustomModal({ visible, setVisible, data }) {
   const { name, photoOne, photoTwo, photoThree, description, Category } = data;
   const [mainImg, setMainImg] = useState(photoOne);
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  const size = useWindowSize();
+
+  React.useEffect(() => {
+    if (size < 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [size]);
 
   const handleMainImg = (src) => {
     setMainImg(src);

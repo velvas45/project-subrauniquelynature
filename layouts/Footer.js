@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styles from './layout.module.scss';
 import { Row, Col } from 'antd';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
+import { useWindowSize } from '../utils/libs/useWindowSize';
 import {
   InstagramOutlined,
   TwitterOutlined,
@@ -14,7 +15,17 @@ import { client } from '../utils/api';
 import useAsync from '../utils/libs/useAsync';
 
 function Footer() {
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  const size = useWindowSize();
+
+  React.useEffect(() => {
+    if (size < 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [size]);
   const [sosmed, setSosmed] = useState([]);
   const [listMediaSosial, loadingMedsos, error] = useAsync(
     client.getMediaSosial,

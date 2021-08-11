@@ -1,7 +1,9 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import styles from './landingPage.module.scss';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
+
+import { useWindowSize } from '../../../utils/libs/useWindowSize';
 import { Row, Col, notification } from 'antd';
 import Slide from 'react-reveal/Slide';
 
@@ -15,7 +17,17 @@ import { client } from '../../../utils/api';
 import useAsync from '../../../utils/libs/useAsync';
 
 function Contact() {
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  const size = useWindowSize();
+
+  React.useEffect(() => {
+    if (size < 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [size]);
   const inputName = useRef(null);
   const inputEmail = useRef(null);
   const inputMsg = useRef(null);

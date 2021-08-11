@@ -1,7 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './landingPage.module.scss';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
+
+import { useWindowSize } from '../../../utils/libs/useWindowSize';
 import { Row, Col, Divider } from 'antd';
 import Slide from 'react-reveal/Slide';
 
@@ -12,7 +14,17 @@ import ImageThree from '../../../public/images/about/image-3.svg';
 import ImageFour from '../../../public/images/about/image-4.svg';
 
 function About() {
-  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  const size = useWindowSize();
+
+  React.useEffect(() => {
+    if (size < 768) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, [size]);
 
   return (
     <div id="About" className={isMobile ? styles.sectionSm : styles.section}>
