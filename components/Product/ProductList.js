@@ -3,8 +3,11 @@ import Image from 'next/image';
 import styles from './product.module.scss';
 import CustomModal from '../Modal';
 
+import { dateFormatter, parseISOString } from '../../utils/dateFormatter';
+
 function ProductList({ data, isLanding = false }) {
-  const { name, photoOne, Category } = data;
+  const { name, photoOne, Category, createdAt } = data;
+  const dateCreated = parseISOString(createdAt);
   const [visible, setVisible] = React.useState(false);
   const myLoader = ({ src }) => {
     return `${process.env.baseImageUrl}/${photoOne}`;
@@ -13,6 +16,7 @@ function ProductList({ data, isLanding = false }) {
     <>
       <div className={styles.productList} onClick={() => setVisible(!visible)}>
         {!isLanding && <p className={styles.titleProduct}>{Category?.name}</p>}
+        {<p className={styles.dateProduct}>{dateFormatter(dateCreated)}</p>}
         <div style={{ padding: '2rem 2rem 0' }}>
           <Image
             loader={myLoader}

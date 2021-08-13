@@ -4,9 +4,20 @@ import styles from './modal.module.scss';
 // import { useMediaQuery } from 'react-responsive';
 
 import { useWindowSize } from '../../utils/libs/useWindowSize';
+import { dateFormatter, parseISOString } from '../../utils/dateFormatter';
 
 function CustomModal({ visible, setVisible, data }) {
-  const { name, photoOne, photoTwo, photoThree, description, Category } = data;
+  const {
+    name,
+    photoOne,
+    photoTwo,
+    photoThree,
+    description,
+    Category,
+    createdAt,
+  } = data;
+
+  const dateCreated = parseISOString(createdAt);
   const [mainImg, setMainImg] = useState(photoOne);
   const [isMobile, setIsMobile] = React.useState(false);
 
@@ -68,8 +79,24 @@ function CustomModal({ visible, setVisible, data }) {
           <Col xs={24} sm={24} md={24} lg={12}>
             <div className={styles.content}>
               <h3>{name}</h3>
+              <p style={{ fontSize: '12px' }}>
+                Tanggal Pembuatan:{' '}
+                <span style={{ color: '#03AC0E' }}>
+                  {dateFormatter(dateCreated)}
+                </span>
+              </p>
               <h6>Deskripsi</h6>
-              <p>{description}</p>
+              <p
+                style={{
+                  width: '280px',
+                  textAlign: 'justify',
+                  color: '#999',
+                  height: '250px',
+                  overflow: 'auto',
+                }}
+              >
+                {description}
+              </p>
             </div>
           </Col>
         </Row>
