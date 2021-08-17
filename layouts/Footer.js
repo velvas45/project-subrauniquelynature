@@ -96,8 +96,8 @@ function Footer() {
               <h3>Company</h3>
               <p>SUBRA UNIQELY NATURE</p>
               <p>
-                Address : Lorem ipsum dolor sit amet,consectetur adipiscing
-                elit. Phasellus aliquet nibh id iaculis pharetra
+                Address : Jl. Raya Tengah Tani No. 94 A Rt/Rw. 001/003 Kelurahan
+                Dawuan Kecamatan Tengah Tani Kab. Cirebon (45153)
               </p>
             </div>
           </Col>
@@ -154,8 +154,8 @@ function Footer() {
               <h3>Company</h3>
               <p>SUBRA UNIQELY NATURE</p>
               <p>
-                Address : Lorem ipsum dolor sit amet,consectetur adipiscing
-                elit. Phasellus aliquet nibh id iaculis pharetra
+                Address : Jl. Raya Tengah Tani No. 94 A Rt/Rw. 001/003 Kelurahan
+                Dawuan Kecamatan Tengah Tani Kab. Cirebon (45153)
               </p>
             </div>
           </Col>
