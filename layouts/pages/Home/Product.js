@@ -86,7 +86,7 @@ function ProductSection({ dataProducts }) {
       </Slide>
 
       {/* carousel */}
-      <CarouselProduct data={data} />
+      <CarouselProduct responsiveMobile={isMobile} data={data} />
 
       {/* status info */}
       <StatusProductInfo statusResponsive={isMobile} />
@@ -138,7 +138,12 @@ const CarouselProduct = (props) => {
       <div className={styles.products}>
         <Slider {...settings}>
           {props.data.map((each, idx) => (
-            <ProductList data={each} key={idx} isLanding={true} />
+            <ProductList
+              responsiveMobile={props.responsiveMobile}
+              data={each}
+              key={idx}
+              isLanding={true}
+            />
           ))}
           {/* <ProductList data={props.data} /> */}
         </Slider>

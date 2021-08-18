@@ -139,12 +139,14 @@ function AllProduct({ dataProduct }) {
         </div>
 
         {/* productList */}
-        <h6 style={{ padding: '0 2rem' }}>Filter by </h6>
+        <h6 style={{ padding: '0 2rem' }}>Sorted by product updated date</h6>
         <div className={isMobile ? styles.productListSm : styles.productList}>
           {loadingData ? (
             <Spin />
           ) : dataState.length > 0 ? (
-            dataState.map((each, idx) => <ProductList key={idx} data={each} />)
+            dataState.map((each, idx) => (
+              <ProductList responsiveMobile={isMobile} key={idx} data={each} />
+            ))
           ) : (
             <p>Product Not Found</p>
           )}

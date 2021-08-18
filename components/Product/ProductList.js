@@ -5,7 +5,7 @@ import CustomModal from '../Modal';
 
 import { dateFormatter, parseISOString } from '../../utils/dateFormatter';
 
-function ProductList({ data, isLanding = false }) {
+function ProductList({ responsiveMobile, data, isLanding = false }) {
   const { name, photoOne, Category, createdAt } = data;
   const dateCreated = parseISOString(createdAt);
   const [visible, setVisible] = React.useState(false);
@@ -16,7 +16,7 @@ function ProductList({ data, isLanding = false }) {
     <>
       <div className={styles.productList} onClick={() => setVisible(!visible)}>
         {!isLanding && <p className={styles.titleProduct}>{Category?.name}</p>}
-        {<p className={styles.dateProduct}>{dateFormatter(dateCreated)}</p>}
+        {<p className={responsiveMobile ? styles.dateProductSm : styles.dateProduct}>{dateFormatter(dateCreated)}</p>}
         <div style={{ padding: '2rem 2rem 0' }}>
           <Image
             loader={myLoader}
