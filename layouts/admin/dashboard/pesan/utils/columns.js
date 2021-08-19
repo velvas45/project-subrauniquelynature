@@ -11,17 +11,23 @@ const columns = ({
       title: 'Pengirim',
       dataIndex: 'name',
       key: 'name',
-      width: '40%',
+      width: '30%',
       ...getColumnSearchProps('name'),
     },
     {
       title: 'Email Pengirim',
       dataIndex: 'email',
       key: 'email',
-      width: '40%',
+      width: '30%',
       ...getColumnSearchProps('email'),
     },
-
+    {
+      title: 'Create At',
+      dataIndex: 'created_at',
+      key: 'created_at',
+      width: '20%',
+      ...getColumnSearchProps('created_at'),
+    },
     {
       title: '',
       key: 'id',
