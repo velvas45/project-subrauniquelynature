@@ -1,5 +1,6 @@
 import { Button, Space, Popconfirm } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
+import { parseISOString } from '../../../../../utils/dateFormatter';
 
 const columns = ({
   getColumnSearchProps,
@@ -22,8 +23,8 @@ const columns = ({
       ...getColumnSearchProps('email'),
     },
     {
-      title: 'Create At',
-      dataIndex: 'createdAt',
+      title: 'Time',
+      dataIndex: `${parseISOString(createdAt)}`,
       key: 'createdAt',
       width: '20%',
       ...getColumnSearchProps('createdAt'),
