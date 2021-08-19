@@ -154,9 +154,9 @@ function AllProduct({ dataProduct }) {
         <span>
           <Pagination
             defaultCurrent={dataProduct.currentPage}
-            pageSizeOptions={[10]}
+            pageSizeOptions={[20]}
             total={dataProduct.totalItems}
-            pageSize={10}
+            pageSize={20}
             onChange={handlePagenation}
           />
         </span>
