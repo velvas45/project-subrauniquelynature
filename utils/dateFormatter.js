@@ -21,7 +21,7 @@ export function dateFormatterWithTime(d) {
     pad(d.getUTCMonth() + 1) +
     '-' +
     d.getUTCFullYear() +
-    ',' +
+    ' , ' +
     pad(d.getUTCHours()) +
     ':' +
     pad(d.getUTCMinutes()) +
