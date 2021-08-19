@@ -23,37 +23,6 @@ const columns = ({ getColumnSearchProps, clickEdit, clickDelete }) => {
       sortDirections: ['descend', 'ascend'],
     },
     {
-      title: 'Product Image',
-      dataIndex: 'photoOne',
-      key: 'photoOne',
-      render: (data, record) => (
-        <Space size="middle">
-          <Image src={`http://localhost:5000/${data}`} />
-        </Space>
-      ),
-    },
-    {
-      title: 'Product Image 2',
-      dataIndex: 'photoTwo',
-      key: 'photoTwo',
-      render: (data, record) => (
-        <Space size="middle">
-          <Image src={`http://localhost:5000/${data}`} />
-        </Space>
-      ),
-    },
-    {
-      title: 'Product Image 3',
-      dataIndex: 'photoThree',
-      key: 'photoThree',
-      render: (data, record) => (
-        <Space size="middle">
-          <Image src={`http://localhost:5000/${data}`} />
-        </Space>
-      ),
-    },
-
-    {
       title: '',
       key: 'action',
       render: (dataRow, record) => (

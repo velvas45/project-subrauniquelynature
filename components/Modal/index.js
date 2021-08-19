@@ -80,12 +80,12 @@ function CustomModal({ visible, setVisible, data }) {
             <div className={styles.content}>
               <h3>{name}</h3>
               <p style={{ fontSize: '12px' }}>
-                Tanggal Pembuatan:{' '}
+                Updated On:{' '}
                 <span style={{ color: '#03AC0E' }}>
                   {dateFormatter(dateCreated)}
                 </span>
               </p>
-              <h6>Deskripsi</h6>
+              <h6>Description</h6>
               <p
                 style={{
                   width: '280px',
