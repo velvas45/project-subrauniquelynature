@@ -19,7 +19,7 @@ const columns = ({ getColumnSearchProps, clickEdit, clickDelete }) => {
       title: 'Deskripsi Product',
       dataIndex: 'description',
       key: 'description',
-      sorter: (a, b) => a.address.length - b.address.length,
+      sorter: (a, b) => a.description.length - b.description.length,
       sortDirections: ['descend', 'ascend'],
     },
     {
