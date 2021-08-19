@@ -23,10 +23,10 @@ const columns = ({
     },
     {
       title: 'Create At',
-      dataIndex: 'created_at',
-      key: 'created_at',
+      dataIndex: 'createdAt',
+      key: 'createdAt',
       width: '20%',
-      ...getColumnSearchProps('created_at'),
+      ...getColumnSearchProps('createdAt'),
     },
     {
       title: '',
