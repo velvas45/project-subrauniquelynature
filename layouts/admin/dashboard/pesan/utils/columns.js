@@ -29,7 +29,7 @@ const columns = ({
       width: '20%',
       ...getColumnSearchProps('createdAt'),
       render: (text) => {
-        return parseISOString(text);
+        return <p>{parseISOString(text)}</p>;
       },
     },
     {
