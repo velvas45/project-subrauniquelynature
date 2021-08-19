@@ -24,10 +24,13 @@ const columns = ({
     },
     {
       title: 'Time',
-      dataIndex: `${parseISOString(createdAt)}`,
+      dataIndex: 'createdAt',
       key: 'createdAt',
       width: '20%',
       ...getColumnSearchProps('createdAt'),
+      render: (text) => {
+        return parseISOString(text);
+      },
     },
     {
       title: '',
