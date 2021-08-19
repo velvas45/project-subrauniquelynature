@@ -2,7 +2,7 @@ import { Button, Space, Popconfirm } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import {
   parseISOString,
-  dateFormatter,
+  dateFormatterWithTime,
 } from '../../../../../utils/dateFormatter';
 
 const columns = ({
@@ -32,7 +32,7 @@ const columns = ({
       width: '20%',
       ...getColumnSearchProps('createdAt'),
       render: (text) => {
-        return <p>{dateFormatter(parseISOString(text))}</p>;
+        return <p>{dateFormatterWithTime(parseISOString(text))}</p>;
       },
     },
     {
