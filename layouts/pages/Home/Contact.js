@@ -114,9 +114,11 @@ const ContactContent = ({
         </div>
       </Col>
       <Col xs={24} sm={24} md={12}>
-        <Slide right>
-          <div className={styles.contactFormContent}>
+        <div className={styles.contactFormContent}>
+          <Slide top>
             <h4>Hi! I think we need to talk. Shall we?</h4>
+          </Slide>
+          <Slide right>
             <form onSubmit={submitHandler}>
               <div className={styles.formGroup}>
                 <input
@@ -127,6 +129,7 @@ const ContactContent = ({
                   placeholder="Name"
                   required
                 />
+
                 <input
                   ref={refAttr.inputEmail}
                   name="email"
@@ -135,6 +138,7 @@ const ContactContent = ({
                   placeholder="Email"
                   required
                 />
+
                 <input
                   ref={refAttr.inputCompany}
                   name="company"
@@ -143,6 +147,7 @@ const ContactContent = ({
                   placeholder="Company"
                   required
                 />
+
                 <select
                   ref={refAttr.inputCountry}
                   name="country"
@@ -158,6 +163,7 @@ const ContactContent = ({
                     </option>
                   ))}
                 </select>
+
                 <textarea
                   id="message"
                   name="message"
@@ -171,8 +177,8 @@ const ContactContent = ({
                 <button className={styles.submitBtn}>Submit</button>
               </div>
             </form>
-          </div>
-        </Slide>
+          </Slide>
+        </div>
       </Col>
     </Row>
   </div>

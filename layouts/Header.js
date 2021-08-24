@@ -116,7 +116,7 @@ function Header() {
       }
     >
       <Row
-        justify={isMobile ? 'space-around' : 'center'}
+        justify={'center'}
         align="middle"
         className={
           !navbarScroll
@@ -124,12 +124,16 @@ function Header() {
             : `${styles.navbarContent} ${styles.colorChange}`
         }
       >
-        <Col span={isMobile ? 12 : 2} className={styles.logo}>
-          <Logo />
-        </Col>
         {!isMobile && (
           <>
-            <Col span={12} offset={2} className={styles.navbarMiddle}>
+            <Col span={isMobile ? 1 : 2} className={styles.logo}>
+              <Logo />
+            </Col>
+            <Col
+              span={isMobile ? 7 : 12}
+              offset={isMobile ? 3 : 2}
+              className={styles.navbarMiddle}
+            >
               <div className={styles.navbar}>
                 <span onClick={() => scrollTo('Home')}>
                   <Link href="/">Home</Link>
@@ -151,7 +155,7 @@ function Header() {
                 </span>
               </div>
             </Col>
-            <Col span={6} offset={2}>
+            <Col span={isMobile ? 7 : 6} offset={2}>
               <div className={styles.navMedsos}>
                 <span>
                   <a target="_blank" href={sosmed && sosmed[0]?.instagram}>
@@ -184,11 +188,16 @@ function Header() {
           </>
         )}
         {isMobile && (
-          <Col>
-            <span onClick={clickHandlerOpen}>
-              {isOpen ? <CloseOutlined /> : <MenuOutlined />}
-            </span>
-          </Col>
+          <>
+            <Col span={12} className={styles.logo}>
+              <Logo />
+            </Col>
+            <Col>
+              <span onClick={clickHandlerOpen}>
+                {isOpen ? <CloseOutlined /> : <MenuOutlined />}
+              </span>
+            </Col>
+          </>
         )}
       </Row>
       {isMobile && (

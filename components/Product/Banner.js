@@ -19,7 +19,7 @@ function Banner({
         justify={responsiveMobile ? 'center' : 'space-between'}
         align="middle"
       >
-        <Col>
+        <Col span={responsiveMobile ? 24 : 12}>
           <h2>Handmade rattan furniture made by the experts</h2>
           {isLanding && (
             <Button
@@ -28,7 +28,7 @@ function Banner({
             />
           )}
         </Col>
-        <Col>
+        <Col span={responsiveMobile ? 24 : 12}>
           <Image
             src={imgSrc}
             alt="bangku"
