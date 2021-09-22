@@ -153,7 +153,7 @@ function AllProduct({ dataProduct }) {
         </div>
         <span>
           <Pagination
-            defaultCurrent={dataProduct.currentPage}
+            defaultCurrent={dataProduct.currentPage + 1}
             pageSizeOptions={[20]}
             total={dataProduct.totalItems}
             pageSize={20}

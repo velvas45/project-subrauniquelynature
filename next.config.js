@@ -14,11 +14,11 @@ module.exports = (phase) => {
   } else {
     return {
       images: {
-        domains: ['api-sun.rolandadifandana.xyz'],
+        domains: ['api.sunfurniture.id'],
       },
       env: {
         baseApiUrl: process.env.BE_PRODUCTION_URL,
-        baseImageUrl: 'http://api-sun.rolandadifandana.xyz',
+        baseImageUrl: 'https://api.sunfurniture.id',
       },
     };
   }

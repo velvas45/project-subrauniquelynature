@@ -16,7 +16,15 @@ function ProductList({ responsiveMobile, data, isLanding = false }) {
     <>
       <div className={styles.productList} onClick={() => setVisible(!visible)}>
         {!isLanding && <p className={styles.titleProduct}>{Category?.name}</p>}
-        {<p className={responsiveMobile ? styles.dateProductSm : styles.dateProduct}>{dateFormatter(dateCreated)}</p>}
+        {
+          <p
+            className={
+              responsiveMobile ? styles.dateProductSm : styles.dateProduct
+            }
+          >
+            {dateFormatter(dateCreated)}
+          </p>
+        }
         <div style={{ padding: '2rem 2rem 0' }}>
           <Image
             loader={myLoader}
@@ -28,7 +36,9 @@ function ProductList({ responsiveMobile, data, isLanding = false }) {
         </div>
         <p className={styles.nameProduct}>{name}</p>
       </div>
-      <CustomModal visible={visible} setVisible={setVisible} data={data} />
+      {visible && (
+        <CustomModal visible={visible} setVisible={setVisible} data={data} />
+      )}
     </>
   );
 }

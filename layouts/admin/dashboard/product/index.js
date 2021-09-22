@@ -56,7 +56,6 @@ function ProductAdmin() {
   };
 
   const handleSubmit = async (value) => {
-    console.log(value);
     setLoadingPost(true);
     try {
       const photoOne64 =

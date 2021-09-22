@@ -30,9 +30,9 @@ function HeaderAdmin() {
       }
     };
 
-    const handleRouteChangeError = (url, { shallow }) => {
-      console.log(url);
-    };
+    // const handleRouteChangeError = (url, { shallow }) => {
+    //   console.log(url);
+    // };
 
     router.events.on('routeChangeComplete', handleRouteChange);
 

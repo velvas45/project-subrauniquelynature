@@ -5,7 +5,6 @@ const { Option } = Select;
 const { TextArea } = Input;
 
 const fields = ({ arrKategori, fileList = [] }) => {
-  console.log(fileList);
   return fileList.length > 0
     ? [
         {
